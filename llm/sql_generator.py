@@ -2,31 +2,36 @@ from config.settings import client
 from rag.retriever import retrieve_context
 
 
-def clean_sql(sql: str) -> str:
+def clean_sql(sql_text):
     """
-    Remove markdown code blocks and extra text from LLM response
+    Remove markdown formatting like ```sql ``` if the LLM returns it.
     """
-    sql = sql.replace("```sql", "")
-    sql = sql.replace("```", "")
-    sql = sql.strip()
-    return sql
+
+    sql_text = sql_text.replace("```sql", "")
+    sql_text = sql_text.replace("```", "")
+    return sql_text.strip()
 
 
-def generate_sql(question: str):
+def generate_sql(question):
 
     context = retrieve_context(question)
 
     system_prompt = f"""
-You are an expert SQL generator.
+You are an expert SQLite SQL generator.
+
+Your job is to convert a user question into a correct SQL query.
 
 Rules:
-- Only generate SQL queries
-- Only SELECT queries
-- Use SQLite syntax
+- Only generate SELECT queries
+- Use SQLite syntax only
 - Do NOT include explanations
-- Do NOT include markdown or ``` blocks
+- Do NOT include markdown like ```sql
+- Return ONLY the SQL query
+- Use the provided database schema
+- When questions ask about highest, maximum, lowest, or rankings,
+  return both the name AND the value column (example: name, marks)
 
-Schema:
+Database Schema:
 {context}
 """
 
@@ -39,9 +44,6 @@ Schema:
         temperature=0
     )
 
-    sql = response.choices[0].message.content
+    sql = response.choices[0].message.content.strip()
 
-    # clean SQL
-    sql = clean_sql(sql)
-
-    return sql
+    return clean_sql(sql)
