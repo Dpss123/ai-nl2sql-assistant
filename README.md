@@ -8,8 +8,7 @@ The system converts natural language into SQL queries using an LLM and retrieves
 ## 🌐 Live Demo
 
 🔗 **App URL:**  
-https://yourusername-ai-nl2sql-assistant.streamlit.app
-
+https://ai-nl2sql-assistant.streamlit.app
 ---
 
 ## 🚀 Features
