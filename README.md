@@ -157,6 +157,13 @@ who got the second highest marks
 show all students
 list students with marks above 80
 ```
+<img width="1907" height="958" alt="Screenshot 2026-03-12 214736" src="https://github.com/user-attachments/assets/1f470214-f989-4300-8659-ad3f11536416" />
+
+<img width="1907" height="957" alt="Screenshot 2026-03-12 214758" src="https://github.com/user-attachments/assets/eb49be7e-f014-4562-b1b1-7c1db4569379" />
+
+<img width="1894" height="948" alt="Screenshot 2026-03-12 214853" src="https://github.com/user-attachments/assets/dab8be83-3c99-45e7-a8b9-a4657cc1408b" />
+
+<img width="1903" height="942" alt="Screenshot 2026-03-12 214957" src="https://github.com/user-attachments/assets/f6a7bd40-7b42-47a0-a735-afaea40fada7" />
 
 ---
 
