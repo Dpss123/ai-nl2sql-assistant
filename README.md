@@ -157,6 +157,12 @@ students older than 20
 
 Example interface:
 
+<img width="1902" height="953" alt="Screenshot 2026-03-12 182340" src="https://github.com/user-attachments/assets/dacb62b2-7d0c-45ac-a076-99f391563b33" />
+
+<img width="1904" height="946" alt="Screenshot 2026-03-12 182410" src="https://github.com/user-attachments/assets/09593974-5014-4c46-bd75-ad8ca4d7e354" />
+
+<img width="1907" height="956" alt="Screenshot 2026-03-12 182501" src="https://github.com/user-attachments/assets/fe3f7776-7711-49ca-aaef-169b8b68485c" />
+
 
 User Question → "highest marks"
 
