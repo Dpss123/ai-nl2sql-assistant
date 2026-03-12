@@ -3,25 +3,30 @@ from config.settings import client
 
 def generate_summary(question, df):
 
-    # If no data
+    # If dataframe empty
     if df is None or df.empty:
         return "No data found for this question."
 
-    # If only one value result
+    # If single value
     if df.shape[0] == 1 and df.shape[1] == 1:
-        value = df.iloc[0, 0]
         column = df.columns[0]
+        value = df.iloc[0, 0]
+
+        # if column is name → answer directly
+        if column.lower() == "name":
+            return f"The answer is {value}."
+
         return f"The {column} is {value}."
 
-    # Limit rows sent to LLM (avoid token overflow)
+    # Limit rows sent to LLM
     preview_df = df.head(5)
 
     result_text = preview_df.to_string(index=False)
 
     prompt = f"""
-You are an AI data analyst.
+You are a data assistant.
 
-Your job is to summarize a SQL query result.
+A SQL query was executed and produced the result below.
 
 User Question:
 {question}
@@ -29,24 +34,18 @@ User Question:
 SQL Result:
 {result_text}
 
-Instructions:
-- Answer in ONE short sentence
-- Use ONLY the SQL result
-- Do NOT guess information
-- If multiple rows exist, summarize the key insight
+Rules:
+- Answer using ONLY the SQL result
+- If the result shows a name, respond with that name as the answer
+- Do NOT say information is missing if the answer is visible
+- Respond in ONE clear sentence
 """
 
     response = client.chat.completions.create(
         model="llama-3.1-8b-instant",
         messages=[
-            {
-                "role": "system",
-                "content": "You summarize SQL query results clearly and accurately."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
+            {"role": "system", "content": "You summarize SQL results for users."},
+            {"role": "user", "content": prompt}
         ],
         temperature=0
     )
