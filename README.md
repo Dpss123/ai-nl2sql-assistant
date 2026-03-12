@@ -1,220 +1,270 @@
-🤖 AI Natural Language to SQL Assistant
+# 🤖 AI Natural Language to SQL Assistant
 
 An AI-powered data assistant that allows users to ask questions in natural language and automatically converts them into SQL queries, executes them on a SQLite database, and returns results with AI-generated summaries.
 
 This project demonstrates how Large Language Models (LLMs), RAG (Retrieval-Augmented Generation), and vector databases can be used to build intelligent data applications.
 
-🚀 Live Demo
+---
 
-🔗 Deployed App:
+## 🚀 Live Demo
+
+- Deployed App  
 https://ai-nl2sql-assistant.streamlit.app
 
-Example questions you can ask:
+### Example Questions
 
+```
 who got the highest marks
 who got the second highest marks
 show marks of Rahul
 list all students
-✨ Features
+```
 
-🧠 Natural Language → SQL
+---
 
-📊 Automatic SQL Execution
+## ✨ Features
 
-💬 Chat-style Interface
+- Natural Language → SQL
+- Automatic SQL Execution
+- Chat-style Interface
+- Automatic Data Visualization
+- AI-generated Result Summaries
+- Fast LLM inference using Groq
+- Schema-aware query generation using RAG
 
-📈 Automatic Data Visualization
+---
 
-🧾 AI-generated Result Summaries
+## 🏗 Project Architecture
 
-⚡ Fast LLM inference using Groq
-
-🗂 Schema-aware query generation using RAG
-
-🏗 Project Architecture
-
+```
 User Question
-⬇
+      ↓
 Streamlit Chat UI
-⬇
+      ↓
 RAG Retriever (Schema Context)
-⬇
+      ↓
 LLM via Groq API
-⬇
+      ↓
 Generated SQL Query
-⬇
+      ↓
 SQLite Database Execution
-⬇
+      ↓
 Query Results + AI Summary
-⬇
+      ↓
 Displayed in Streamlit UI
+```
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 ai-nl2sql-assistant
 │
-├── app.py                     # Main Streamlit application
-├── requirements.txt           # Python dependencies
-├── README.md                  # Project documentation
+├── app.py
+├── requirements.txt
+├── README.md
 │
 ├── config
 │   ├── __init__.py
-│   └── settings.py            # API keys and configuration
+│   └── settings.py
 │
 ├── database
 │   ├── __init__.py
-│   ├── init_db.py             # Creates SQLite database
-│   └── queries.py             # Executes SQL queries
+│   ├── init_db.py
+│   └── queries.py
 │
 ├── llm
 │   ├── __init__.py
-│   ├── sql_generator.py       # Converts natural language → SQL
-│   └── summary.py             # Generates AI summaries
+│   ├── sql_generator.py
+│   └── summary.py
 │
 ├── rag
 │   ├── __init__.py
-│   ├── retriever.py           # Retrieves schema context
-│   └── vector_store.py        # FAISS vector database
+│   ├── retriever.py
+│   └── vector_store.py
 │
 └── data
-    └── school.db              # SQLite database
-⚙️ Tech Stack
+    └── school.db
+```
 
-Python
+---
 
-Streamlit
+## ⚙️ Tech Stack
 
-SQLite
+- Python
+- Streamlit
+- SQLite
+- Groq API (LLM)
+- Sentence Transformers
+- FAISS (Vector Database)
+- Pandas
+- Matplotlib
 
-Groq API (LLM)
+---
 
-Sentence Transformers
+## 🧠 How It Works
 
-FAISS (Vector Database)
-
-Pandas
-
-Matplotlib
-
-🧠 How It Works
-1️⃣ User asks a question
+### 1. User asks a question
 
 Example:
 
+```
 Who got the highest marks?
-2️⃣ Schema Retrieval (RAG)
+```
+
+### 2. Schema Retrieval (RAG)
 
 The system retrieves relevant database schema information using vector search.
 
-3️⃣ LLM Generates SQL
+### 3. LLM Generates SQL
 
 Example generated SQL:
 
-SELECT name, marks 
-FROM students 
-ORDER BY marks DESC 
+```sql
+SELECT name, marks
+FROM students
+ORDER BY marks DESC
 LIMIT 1;
-4️⃣ Query Execution
+```
+
+### 4. Query Execution
 
 The SQL query is executed on the SQLite database.
 
-5️⃣ Result + AI Summary
+### 5. Result + AI Summary
 
 Result:
 
-name	marks
-Anita	92
+```
+name   marks
+Anita  92
+```
 
 Summary:
 
+```
 Anita scored the highest marks with 92.
+```
 
-📊 Example Queries
+---
 
-Try asking:
+## 📊 Example Queries
 
+```
 who got highest marks
 who got the second highest marks
 show all students
 list students with marks above 80
-🛠 Installation
-1️⃣ Clone the repository
+```
+
+---
+
+## 🛠 Installation
+
+### Clone the repository
+
+```bash
 git clone https://github.com/Dpss123/ai-nl2sql-assistant.git
 cd ai-nl2sql-assistant
-2️⃣ Create virtual environment
+```
+
+### Create virtual environment
+
+```bash
 python -m venv venv
+```
 
-Activate it:
+Activate environment
 
-Windows:
+Windows
 
+```
 venv\Scripts\activate
+```
 
-Mac/Linux:
+Mac/Linux
 
+```
 source venv/bin/activate
-3️⃣ Install dependencies
+```
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
-4️⃣ Add your Groq API Key
+```
+
+### Add Groq API Key
 
 Edit:
 
+```
 config/settings.py
+```
 
 Add your key:
 
+```python
 GROQ_API_KEY = "your_api_key_here"
-5️⃣ Run the application
+```
+
+### Run the application
+
+```bash
 streamlit run app.py
-🌐 Deployment
+```
 
-The app is deployed using Streamlit Cloud.
+---
 
-Steps:
+## 🌐 Deployment
 
-Push project to GitHub
+- Push project to GitHub
+- Connect repository to Streamlit Cloud
+- Add environment variables
+- Deploy
 
-Connect repository to Streamlit Cloud
+---
 
-Add environment variables
+## 🎯 Use Cases
 
-Deploy
+- Natural language database querying
+- AI data assistants
+- ChatGPT-style analytics tools
+- Business intelligence interfaces
+- AI-powered dashboards
 
-🎯 Use Cases
+---
 
-Natural language database querying
+## 📈 Future Improvements
 
-AI data analysis assistants
+- Upload CSV datasets
+- Support multiple databases
+- Add authentication
+- Add conversation memory
+- Improve SQL optimization
+- Add dashboard analytics
 
-ChatGPT-style analytics tools
+---
 
-Business intelligence interfaces
+## 🤝 Contributing
 
-AI-powered dashboards
+- Fork the repository
+- Create a new branch
+- Commit changes
+- Submit a Pull Request
 
-📈 Future Improvements
+---
 
-Upload CSV datasets
+## 👨‍💻 Author
 
-Support multiple databases
+Dheerendra Pratap Singh
+Data Science | AI | Machine Learning 
 
-Add authentication
+GitHub  
+https://github.com/Dpss123
 
-Add conversation memory
+LinkedIn  
+https://www.linkedin.com/in/dheeeru/
 
-Improve SQL optimization
-
-Add dashboard analytics
-
-🤝 Contributing
-
-Contributions are welcome!
-
-Steps:
-
-Fork the repository
-
-Create a new branch
-
-Commit changes
-
-Submit a Pull Request
+---
