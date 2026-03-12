@@ -1,214 +1,220 @@
-# 🤖 AI NL2SQL Data Assistant
+🤖 AI Natural Language to SQL Assistant
 
-An AI-powered Natural Language to SQL assistant that allows users to query databases using simple English questions.  
-The system converts natural language into SQL queries using an LLM and retrieves results from a database in real time.
-  
----
+An AI-powered data assistant that allows users to ask questions in natural language and automatically converts them into SQL queries, executes them on a SQLite database, and returns results with AI-generated summaries.
 
-## 🌐 Live Demo
+This project demonstrates how Large Language Models (LLMs), RAG (Retrieval-Augmented Generation), and vector databases can be used to build intelligent data applications.
 
-🔗 **App URL:**  
+🚀 Live Demo
+
+🔗 Deployed App:
 https://ai-nl2sql-assistant.streamlit.app
----
 
-## 🚀 Features
+Example questions you can ask:
 
-- Natural Language → SQL query generation
-- LLM-powered query generation using Groq API
-- Retrieval-Augmented Generation (RAG) for schema understanding
-- SQLite database integration
-- Interactive web interface using Streamlit
-- Automatic SQL result visualization
-- Safe SQL execution (SELECT-only queries)
+who got the highest marks
+who got the second highest marks
+show marks of Rahul
+list all students
+✨ Features
 
----
+🧠 Natural Language → SQL
 
-## 🧠 How It Works
+📊 Automatic SQL Execution
 
-1. User enters a question in natural language  
-2. RAG retrieves relevant database schema context  
-3. LLM generates a valid SQL query  
-4. Query runs on the SQLite database  
-5. Results are displayed in an interactive table
+💬 Chat-style Interface
 
----
+📈 Automatic Data Visualization
 
-## 🏗️ Project Architecture
+🧾 AI-generated Result Summaries
 
+⚡ Fast LLM inference using Groq
+
+🗂 Schema-aware query generation using RAG
+
+🏗 Project Architecture
 
 User Question
-↓
-Streamlit UI
-↓
+⬇
+Streamlit Chat UI
+⬇
 RAG Retriever (Schema Context)
-↓
-LLM (Groq API)
-↓
-Generated SQL
-↓
-SQLite Database
-↓
-Query Results
-↓
-Streamlit UI
+⬇
+LLM via Groq API
+⬇
+Generated SQL Query
+⬇
+SQLite Database Execution
+⬇
+Query Results + AI Summary
+⬇
+Displayed in Streamlit UI
 
-
----
-
-## 📂 Project Structure
-
-
+📁 Project Structure
 ai-nl2sql-assistant
 │
-├── app.py
+├── app.py                     # Main Streamlit application
+├── requirements.txt           # Python dependencies
+├── README.md                  # Project documentation
 │
 ├── config
-│ ├── init.py
-│ └── settings.py
+│   ├── __init__.py
+│   └── settings.py            # API keys and configuration
 │
 ├── database
-│ ├── init.py
-│ ├── init_db.py
-│ └── queries.py
+│   ├── __init__.py
+│   ├── init_db.py             # Creates SQLite database
+│   └── queries.py             # Executes SQL queries
 │
 ├── llm
-│ ├── init.py
-│ ├── sql_generator.py
-│ └── summary.py
+│   ├── __init__.py
+│   ├── sql_generator.py       # Converts natural language → SQL
+│   └── summary.py             # Generates AI summaries
 │
 ├── rag
-│ ├── init.py
-│ ├── retriever.py
-│ └── vector_store.py
+│   ├── __init__.py
+│   ├── retriever.py           # Retrieves schema context
+│   └── vector_store.py        # FAISS vector database
 │
-├── data
-│ └── school.db
-│
-├── requirements.txt
-└── README.md
+└── data
+    └── school.db              # SQLite database
+⚙️ Tech Stack
 
+Python
 
----
+Streamlit
 
-## ⚙️ Tech Stack
+SQLite
 
-- **Python**
-- **Streamlit**
-- **Groq LLM API**
-- **SQLite**
-- **Sentence Transformers**
-- **FAISS Vector Database**
-- **Pandas**
+Groq API (LLM)
 
----
+Sentence Transformers
 
-## 📦 Installation
+FAISS (Vector Database)
 
-Clone the repository:
+Pandas
 
-git clone https://github.com/yourusername/ai-nl2sql-assistant.git
+Matplotlib
 
+🧠 How It Works
+1️⃣ User asks a question
+
+Example:
+
+Who got the highest marks?
+2️⃣ Schema Retrieval (RAG)
+
+The system retrieves relevant database schema information using vector search.
+
+3️⃣ LLM Generates SQL
+
+Example generated SQL:
+
+SELECT name, marks 
+FROM students 
+ORDER BY marks DESC 
+LIMIT 1;
+4️⃣ Query Execution
+
+The SQL query is executed on the SQLite database.
+
+5️⃣ Result + AI Summary
+
+Result:
+
+name	marks
+Anita	92
+
+Summary:
+
+Anita scored the highest marks with 92.
+
+📊 Example Queries
+
+Try asking:
+
+who got highest marks
+who got the second highest marks
+show all students
+list students with marks above 80
+🛠 Installation
+1️⃣ Clone the repository
+git clone https://github.com/Dpss123/ai-nl2sql-assistant.git
 cd ai-nl2sql-assistant
-
-Create a virtual environment:
-
+2️⃣ Create virtual environment
 python -m venv venv
 
-Activate environment:
+Activate it:
 
 Windows:
 
 venv\Scripts\activate
 
-Install dependencies:
+Mac/Linux:
 
+source venv/bin/activate
+3️⃣ Install dependencies
 pip install -r requirements.txt
-🔑 Add API Key
+4️⃣ Add your Groq API Key
 
-Create a Streamlit secrets file:
+Edit:
 
+config/settings.py
 
-.streamlit/secrets.toml
-
-
-Add your Groq API key:
+Add your key:
 
 GROQ_API_KEY = "your_api_key_here"
-▶️ Run the Application
+5️⃣ Run the application
 streamlit run app.py
+🌐 Deployment
 
-Then open:
+The app is deployed using Streamlit Cloud.
 
+Steps:
 
-http://localhost:8501
+Push project to GitHub
 
-💬 Example Questions
+Connect repository to Streamlit Cloud
 
-Try asking:
+Add environment variables
 
-highest marks
-average marks
-students in CSE
-list all departments
-students older than 20
-
-
-📸 Screenshots
-
-Example interface:
-
-<img width="1902" height="953" alt="Screenshot 2026-03-12 182340" src="https://github.com/user-attachments/assets/dacb62b2-7d0c-45ac-a076-99f391563b33" />
-
-<img width="1904" height="946" alt="Screenshot 2026-03-12 182410" src="https://github.com/user-attachments/assets/09593974-5014-4c46-bd75-ad8ca4d7e354" />
-
-<img width="1907" height="956" alt="Screenshot 2026-03-12 182501" src="https://github.com/user-attachments/assets/fe3f7776-7711-49ca-aaef-169b8b68485c" />
-
-
-User Question → "highest marks"
-
-Generated SQL:
-
-SELECT MAX(marks) FROM students;
-
-Result:
-
-92
+Deploy
 
 🎯 Use Cases
 
-Data analysis without SQL knowledge
-
 Natural language database querying
 
-AI-powered analytics dashboards
+AI data analysis assistants
 
-Educational SQL learning tools
+ChatGPT-style analytics tools
 
-🔒 Security
+Business intelligence interfaces
 
-The system only allows SELECT queries to prevent database modification.
+AI-powered dashboards
 
 📈 Future Improvements
 
-Multi-database support (PostgreSQL, MySQL)
+Upload CSV datasets
 
-Advanced RAG with larger schema context
+Support multiple databases
 
-Query explanation for learning SQL
+Add authentication
 
-Role-based query permissions
+Add conversation memory
 
-Support for large enterprise databases
+Improve SQL optimization
 
-👨‍💻 Author
+Add dashboard analytics
 
-Dheerendra Pratap Singh
+🤝 Contributing
 
-B.Tech Computer Science Engineering
-Data Science / ML / AI Enthusiast
+Contributions are welcome!
 
-GitHub:
-https://github.com/Dpss123
+Steps:
 
-LinkedIn:
-https://www.linkedin.com/in/dheeeru/
+Fork the repository
+
+Create a new branch
+
+Commit changes
+
+Submit a Pull Request
