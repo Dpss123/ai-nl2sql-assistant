@@ -107,8 +107,8 @@ ai-nl2sql-assistant
 
 Clone the repository:
 
-```bash
 git clone https://github.com/yourusername/ai-nl2sql-assistant.git
+
 cd ai-nl2sql-assistant
 
 Create a virtual environment:
@@ -147,12 +147,12 @@ http://localhost:8501
 
 Try asking:
 
-
 highest marks
 average marks
 students in CSE
 list all departments
 students older than 20
+
 
 📸 Screenshots
 
@@ -200,7 +200,7 @@ Support for large enterprise databases
 Dheerendra Pratap Singh
 
 B.Tech Computer Science Engineering
-AI / ML / LLM Enthusiast
+Data Science / ML / AI Enthusiast
 
 GitHub:
 https://github.com/Dpss123
