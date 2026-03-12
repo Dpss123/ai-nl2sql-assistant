@@ -2,7 +2,7 @@
 
 An AI-powered Natural Language to SQL assistant that allows users to query databases using simple English questions.  
 The system converts natural language into SQL queries using an LLM and retrieves results from a database in real time.
- 
+  
 ---
 
 ## 🌐 Live Demo
